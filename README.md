@@ -7,4 +7,3 @@ Final project of group Betty Queen
 4. plotDegreeEmployment (table #9-7)
 5. plotSupportSource (table #7-26)
 6. plotGovernmentRace (table #9-34)
-
