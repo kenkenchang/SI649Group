@@ -1,15 +1,67 @@
 <html>
 <HEAD>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="plotAnyLineTrend.js"></script>
+<script src="plotDegreeAttainment.js"></script>
+<script src="plotGovernmentRace.js"></script>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 </HEAD>
 
 <body>
+<div id="mdeg-container" style="width: 30%; height: 500px;">  </div>
+<div id="ddeg-container" style="width: 30%; height: 500px;">  </div>
+<div id="mdeg-strict-container" style="width: 30%; height: 500px;">  </div>
+<div id="ddeg-strict-container" style="width: 30%; height: 500px;">  </div>
+<div id="gemp-container" style="width: 30%; height: 500px;">  </div>
+<div id="gemp-strict-container" style="width: 30%; height: 500px;">  </div>
 
-Hello World!
 
-// Options - get var
-// Addplot(var)
-
-
+<script type="text/javascript">
+  var gemp_json = (function () {
+    var json;
+    $.ajax({
+        'async': false,
+        'global': false,
+        'url': "GovtEmployed.json",
+        'dataType': "json",
+        'success': function (data) {
+            json = data;
+        }
+    });
+    return json;
+  })();
+  var mdeg_json = (function () {
+    var json;
+    $.ajax({
+        'async': false,
+        'global': false,
+        'url': "MasterDegree.json",
+        'dataType': "json",
+        'success': function (data) {
+            json = data;
+        }
+    });
+    return json;
+  })();
+  var ddeg_json = (function () {
+    var json;
+    $.ajax({
+        'async': false,
+        'global': false,
+        'url': "DoctoralDegree.json",
+        'dataType': "json",
+        'success': function (data) {
+            json = data;
+        }
+    });
+    return json;
+  })();
+  plotGovernmentRace(gemp_json);
+  plotDegreeAttainment(mdeg_json, ddeg_json);  
+</script>
 </body>
 </html>
