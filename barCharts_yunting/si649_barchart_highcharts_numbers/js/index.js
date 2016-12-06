@@ -112,7 +112,7 @@ $(function () {
             type: 'column'
         },
         title: {
-            text: 'Employed S&E by Races'
+            text: 'Employed S&E by Races and Degrees'
         },
         xAxis: {
             categories: [
@@ -144,8 +144,11 @@ $(function () {
             }
         },
         series: [{         
-            name: 'All Degrees',
-            data: [2860000, 114000, 38000, 108000]
+            name: 'Masters',
+            data: [706000, 36000, 9000, 38000]
+        }, {
+            name: 'Doctoral',
+            data: [316000, 11000, 2000, 9000]
         }]
     });
 });
