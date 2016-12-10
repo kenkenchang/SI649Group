@@ -6,6 +6,11 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
+<script src='https://code.highcharts.com/modules/exporting.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+<script src="plotSupportSource.js"></script>
+<script src="Barchart_SEemployment_2013/js/index.js"></script>
 
 <div id="chart_container" style="height: 400px"></div><input id="remove_chart_1" type="button" value="remove" />
 <button id="update_button" class="autocompare">Set new data</button><br><br>
@@ -160,16 +165,19 @@ checkallFemale.onclick = function() {
            		parameters.push("line_chart_container_"+chart_counter);
            	}
            	else if (topic == "Doctoral Employment in 2013" || topic == "Master Employment in 2013") {
-           		var container = $('<div id="star_chart_container_'+chart_counter+'" style="height: 400px, width: 600px"></div>');
+           		var container = $('<div id="bar_chart_container_'+chart_counter+'" style="height: 400px, width: 600px"></div>');
            		$("body").append(container);
            		// $("#star_chart_container_"+chart_counter).append(remove_button, {id: remove_id});
-           		parameters.push("star_chart_container_"+chart_counter);
+           		parameters.push("bar_chart_container_"+chart_counter);
+              // getValue(parameters[1], parameters[2]);
+
            	}
            	else {
-           		var container = $('<div id="bar_chart_container_'+chart_counter+'" style="height: 500px, min-width: 300px"></div>');
+           		var container = $('<div id="star_chart_container_'+chart_counter+'" style="height: 500px, min-width: 300px"></div>');
            		$("body").append(container);
            		// $("#bar_chart_container_"+chart_counter).append(remove_button, {id: 'test'});
-           		parameters.push("bar_chart_container_"+chart_counter);
+           		parameters.push("star_chart_container_"+chart_counter);
+              plotSupportSource(parameters[0], parameters[1], parameters[2]);
            	};
 
            	console.log(parameters);
