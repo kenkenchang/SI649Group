@@ -63,7 +63,7 @@ function getValue(array, id) {
             console.log("Found you!!");
             degree_data.push(
                     {
-                      color: "#388CE8",          
+                      color: "#A4BBD5",          
                       name: 'Men - White',
                       data: [73,74, 71, 68]
                     }
@@ -87,7 +87,7 @@ function getValue(array, id) {
             console.log("Found you!!");
             degree_data.push(
                     {        
-                      color: "#F6A623",   
+                      color: "#FFCA72",   
                       name: 'Men - Hispanic',
                       data: [7,7,6,4]
                     }
@@ -111,8 +111,8 @@ function getValue(array, id) {
             console.log("Found you!!");
             degree_data.push(
                     {         
-                      color: "#7ED321",
-                      name: 'Men - African',
+                      color: "#A8EE5C",
+                      name: 'Men - African American',
                       data: [4,5,5,3]
                     }
             );    
@@ -124,7 +124,7 @@ function getValue(array, id) {
             degree_data.push(
                     {
                       color: "#7ED321",       
-                      name: 'Women - African',
+                      name: 'Women - African American',
                       data: [8,8,8,6]
                     }
             );    
@@ -135,23 +135,24 @@ function getValue(array, id) {
             console.log("Found you!!");
             degree_data.push(
                     {
-                      color:"#ED2A7B",         
-                      name: 'Men - Native',
+                      color:"#F386B3",         
+                      name: 'Men - Native American',
                       data: [0.2,0.2,0.2,0.1]
                     }
             );    
         }
 
         if ( array[index] == "Women - Native" ) {
-            
+    
             console.log("Found you!!");
             degree_data.push(
                     {         
                       color:"#ED2A7B",
-                      name: 'Women - Native',
+                      name: 'Women - Native American',
                       data: [0.3,0.4,0.2,0.4]
                     }
             );    
+        
         }
     }
     // call plotting function
