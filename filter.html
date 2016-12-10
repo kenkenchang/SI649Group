@@ -6,6 +6,11 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
+<script src='https://code.highcharts.com/modules/exporting.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+<script src="plotSupportSource.js"></script>
+<script src="Barchart_SEemployment_2013/js/index.js"></script>
 
 <div id="chart_container" style="height: 400px"></div><input id="remove_chart_1" type="button" value="remove" />
 <button id="update_button" class="autocompare">Set new data</button><br><br>
@@ -24,6 +29,7 @@
 	      <option>Source of Support for Doctoral in 2013</option>
 	      <option>Government S&E Employment in Races</option>
 	    </select> 
+	   </div>
 	    <br>
 	    <label class="control-label" for="groups">2). Select Data</label><br>
 	   <div id="groups">
@@ -33,8 +39,8 @@
 			      <ul>
 			        <li><label><input id="Men - White" type="checkbox" class="subOptionMale"> White</label></li>
 			        <li><label><input id="Men - Hispanic" type="checkbox" class="subOptionMale"> Hispanic</label></li>
-			        <li><label><input id="Men - African" type="checkbox" class="subOptionMale"> African</label></li>
-			        <li><label><input id="Men - Native" type="checkbox" class="subOptionMale"> Native</label></li>
+			        <li><label><input id="Men - African" type="checkbox" class="subOptionMale"> African American</label></li>
+			        <li><label><input id="Men - Native" type="checkbox" class="subOptionMale"> Native American</label></li>
 			        <li><label><input id="Men - Minority" type="checkbox" class="subOptionMale"> STEM Minorites</label></li>
 			      </ul>
 			    </li>
@@ -45,8 +51,8 @@
 			      <ul>
 			        <li><label><input id="Women - White" type="checkbox" class="subOptionFemale"> White</label></li>
 			        <li><label><input id="Women - Hispanic" type="checkbox" class="subOptionFemale"> Hispanic</label></li>
-			        <li><label><input id="Women - African" type="checkbox" class="subOptionFemale"> African</label></li>
-			        <li><label><input id="Women - Native" type="checkbox" class="subOptionFemale"> Native</label></li>
+			        <li><label><input id="Women - African" type="checkbox" class="subOptionFemale"> African American</label></li>
+			        <li><label><input id="Women - Native" type="checkbox" class="subOptionFemale"> Native American</label></li>
 			        <li><label><input id="Women - Minority" type="checkbox" class="subOptionFemale"> STEM Minorites</label></li>
 			      </ul>
 			    </li>
@@ -123,8 +129,11 @@ checkallFemale.onclick = function() {
 // Collect options
  $(function(){
        $('#options_form').on('submit', function(e){
+       		parameters = [];
             e.preventDefault();
+            var topic = $( "#topic option:selected" ).text();
             var groups_selected = [];
+            parameters.push(topic);
             if (checkallMale.checked) {
             	groups_selected.push('Men (all)');
             } else {
@@ -144,16 +153,34 @@ checkallFemale.onclick = function() {
   					groups_selected.push(value.id)
 					});
         	}
-
+        	parameters.push(groups_selected);
         	chart_counter += 1;
-           	console.log(groups_selected);
-           	var topic = $('#topic:selected').text();
+           	
+           	var remove_button = $('<input type="button" value="remove"/>')
+           	var remove_id = chart_counter + "_remove"
            	if (topic == "Doctoral Degree Trend" || topic == "Master Degree Trend" || topic == "Government S&E Employment in Races") {
            		var container = $('<div id="line_chart_container_'+chart_counter+'" style="height: 500px, width: 30%"></div>');
-           	};
-           	
-           	var container = $('<div id="chart_container_'+chart_counter+'" style="height: 500px, width: 30%"></div>');
+           		$("body").append(container);
+           		// $("#line_chart_container_"+chart_counter).append(remove_button, {id: remove_id});
+           		parameters.push("line_chart_container_"+chart_counter);
+           	}
+           	else if (topic == "Doctoral Employment in 2013" || topic == "Master Employment in 2013") {
+           		var container = $('<div id="bar_chart_container_'+chart_counter+'" style="height: 400px, width: 600px"></div>');
+           		$("body").append(container);
+           		// $("#star_chart_container_"+chart_counter).append(remove_button, {id: remove_id});
+           		parameters.push("bar_chart_container_"+chart_counter);
+              // getValue(parameters[1], parameters[2]);
 
+           	}
+           	else {
+           		var container = $('<div id="star_chart_container_'+chart_counter+'" style="height: 500px, min-width: 300px"></div>');
+           		$("body").append(container);
+           		// $("#bar_chart_container_"+chart_counter).append(remove_button, {id: 'test'});
+           		parameters.push("star_chart_container_"+chart_counter);
+              plotSupportSource(parameters[0], parameters[1], parameters[2]);
+           	};
+
+           	console.log(parameters);
 
        }); 
     });
