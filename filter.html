@@ -163,13 +163,16 @@ checkallFemale.onclick = function() {
            		$("body").append(container);
            		// $("#line_chart_container_"+chart_counter).append(remove_button, {id: remove_id});
            		parameters.push("line_chart_container_"+chart_counter);
-           	}
+           	
+              // call line function
+
+            }
            	else if (topic == "Doctoral Employment in 2013" || topic == "Master Employment in 2013") {
            		var container = $('<div id="bar_chart_container_'+chart_counter+'" style="height: 400px, width: 600px"></div>');
            		$("body").append(container);
            		// $("#star_chart_container_"+chart_counter).append(remove_button, {id: remove_id});
            		parameters.push("bar_chart_container_"+chart_counter);
-              // getValue(parameters[1], parameters[2]);
+              getValue(parameters[1], parameters[2]);
 
            	}
            	else {
