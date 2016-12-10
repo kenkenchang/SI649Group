@@ -1,9 +1,9 @@
 function plotDegreeAttainment(mdeg, ddeg) {
   var years = ["2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014"];
-  var mdeg_plot_info = ["mdeg-container", "Master's Degree Attainment Trend", "Percent of attained degrees", "% of total degrees attained" ]
-  var ddeg_plot_info = ["ddeg-container", "Doctoral Degree Attainment Trend", "Percent of attained degrees", "% of total degrees attained" ]
-  var mdeg_strict_plot_info = ["mdeg-strict-container", "Master's Degree Percent Increase Trend", "Percent of attained degrees", "% change from previous year"  ]
-  var ddeg_strict_plot_info = ["ddeg-strict-container", "Doctoral Degree Percent Increase Trend", "Percent of attained degrees", "% change from previous year" ]
+  var mdeg_plot_info = ["mdeg-container", "Master's Degree Attainment Trend", "Percent of attained degrees", "% of all degrees" ]
+  var ddeg_plot_info = ["ddeg-container", "Doctoral Degree Attainment Trend", "Percent of attained degrees", "% of all degrees" ]
+  var mdeg_strict_plot_info = ["mdeg-strict-container", "Master's Degree Percent Increase Trend", "Percent of degrees", '% change from ' + years[0]  ]
+  var ddeg_strict_plot_info = ["ddeg-strict-container", "Doctoral Degree Percent Increase Trend", "Percent of degrees", '% change from ' + years[0] ]
   var mdeg_totals_array = getMetricTotals(mdeg); //Gets totals which are used to calculate % of each race
   var ddeg_totals_array = getMetricTotals(ddeg);
   var mdeg_percent = convertValsToPercent(mdeg_totals_array, mdeg);  //Converts all race data to percent

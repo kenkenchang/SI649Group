@@ -1,4 +1,10 @@
 function plotAnyLineTrend(deg, years, deg_plot_info) { 
+  Highcharts.setOptions({
+        colors: ['#BD0FE1', '#388CE8', '#F6A623', '#7ED321', '#ED2A7B', '#46780C'],
+        dashStyle: 'dot'
+    });
+
+
     Highcharts.chart( deg_plot_info[0], {
         chart: {
             type: 'line'
@@ -14,21 +20,30 @@ function plotAnyLineTrend(deg, years, deg_plot_info) {
                 text: deg_plot_info[2]
             }
         },tooltip: {
-            valueSuffix: deg_plot_info[3]
+            //split: true,
+            valueSuffix: deg_plot_info[3],
+            crosshairs: {
+              color: 'black',
+              dashStyle: 'solid',
+              width: 4
+            },
+            shared: true
         },
         series: deg
     });
 };
 
+
+
 function getMetricTotals (vals_json){
   var sum_total_array = [];
   for (var i = 0; i < vals_json.length; i++) {
-    if (i == 0){//gets all male totals
+    if (vals_json[i].name == "All male"){//gets all male totals
       for (var j = 0; j < vals_json[i].data.length; j++) {
         sum_total_array.push(vals_json[i].data[j])
       }
     }
-    else if ( i == 5){ //gets all female totals
+    else if (vals_json[i].name == "All female"){ //gets all female totals
       for (var j = 0; j < vals_json[i].data.length; j++) {
         sum_total_array[j]+=vals_json[i].data[j]
       }
@@ -36,6 +51,8 @@ function getMetricTotals (vals_json){
   }
   return sum_total_array;
 };
+
+
 
 function convertValsToPercent (totals_array, vals_json){
   for (var i = 0; i < vals_json.length; i++) { //for each json object in array
@@ -48,21 +65,14 @@ function convertValsToPercent (totals_array, vals_json){
 }
 
 function calcPercentChangeByYear(percent_json){
-  var prev_old_value;
-  var curr_old_value;
   var data = []
   for (var i = 0; i < percent_json.length; i++) { //for each json object in array
+    var value_of_start_year = percent_json[i].data[0];
     var data = []
     for (var j = 0; j < percent_json[i].data.length; j++) { 
-      var percent_yearly_change;
-      if (j == 0){
-        percent_yearly_change = Math.round(((percent_json[i].data[j]-percent_json[i].data[0])/percent_json[i].data[0])*100*100)/100
-        data.push(percent_yearly_change)
-      }
-      else {
-        percent_yearly_change = Math.round(((percent_json[i].data[j]-percent_json[i].data[j-1])/percent_json[i].data[j-1])*100*100)/100
-        data.push(percent_yearly_change)
-      }
+      var percent_change_from_start_year;
+      percent_change_from_start_year = Math.round(((percent_json[i].data[j]-value_of_start_year)/value_of_start_year)*100*100)/100
+      data.push(percent_change_from_start_year)     
     }
     percent_json[i].data = data;
   }
