@@ -4,7 +4,9 @@ function plotSupportSource(topic, race_list, container) {
 	title_str2 = ' Doctor in 2010-14'
 
     men_dashStyle = 'ShortDot'
+    men_symbol = 'triangle'
     women_dashStyle = 'Solid'
+    women_symbol = 'circle'
     //////////////////////////////////////////////
     // DATA START ////////////////////////////////
 	var Data = [ 
@@ -74,6 +76,7 @@ function plotSupportSource(topic, race_list, container) {
                  {name: 'Women (all)',
                   color: '#BD0FE1',
                   dashStyle: women_dashStyle,
+                  symbol: women_symbol,
                     number: 48887,
                     Personal: 15.7,
                     Teaching: 16.2,
@@ -83,6 +86,7 @@ function plotSupportSource(topic, race_list, container) {
                  {name: 'Women - Hispanic',
                   color: '#F6A623',
                   dashStyle: women_dashStyle,
+                  symbol: women_symbol,
                     number: 3445,
                     Personal: 17.2,
                     Teaching: 12.4,
@@ -92,6 +96,7 @@ function plotSupportSource(topic, race_list, container) {
                  {name: 'Women - Native',
                   color: '#ED2A7B',
                   dashStyle: women_dashStyle,
+                  symbol: women_symbol,
                     number: 156,
                     Personal: 21.2,
                     Teaching: 12.2,
@@ -108,6 +113,7 @@ function plotSupportSource(topic, race_list, container) {
                  {name: 'Women - African',
                   color: '#7ED321',
                   dashStyle: women_dashStyle,
+                  symbol: women_symbol,
                     number: 2911,
                     Personal: 23,
                     Teaching: 10.1,
@@ -117,6 +123,7 @@ function plotSupportSource(topic, race_list, container) {
                  {name: 'Women - White',
                   color: '#388CE8',
                   dashStyle: women_dashStyle,
+                  symbol: women_symbol,
                     number: 34108,
                     Personal: 16.3,
                     Teaching: 17.5,
@@ -147,6 +154,7 @@ function plotSupportSource(topic, race_list, container) {
                  {name: 'Women - Minority',
                   color: '#46780C',
                   dashStyle: women_dashStyle,
+                  symbol: women_symbol,
                     number: 6512,
                     Personal: 19.9,
                     Teaching: 11.4,
@@ -156,6 +164,7 @@ function plotSupportSource(topic, race_list, container) {
                  {name: 'Men (all)',
                   color: '#BD0FE1',
                   dashStyle: men_dashStyle,
+                  symbol: men_symbol,
                     number: 57430,
                     Personal: 10.4,
                     Teaching: 16.4,
@@ -165,6 +174,7 @@ function plotSupportSource(topic, race_list, container) {
                  {name: 'Men - Hispanic',
                   color: '#F6A623',
                   dashStyle: men_dashStyle,
+                  symbol: men_symbol,
                     number: 3201,
                     Personal: 11.2,
                     Teaching: 14.2,
@@ -174,6 +184,7 @@ function plotSupportSource(topic, race_list, container) {
                  {name: 'Men - Native',
                   color: '#ED2A7B',
                   dashStyle: men_dashStyle,
+                  symbol: men_symbol,
                     number: 169,
                     Personal: 21.9,
                     Teaching: 13,
@@ -190,6 +201,7 @@ function plotSupportSource(topic, race_list, container) {
                  {name: 'Men - African',
                   color: '#7ED321',
                   dashStyle: men_dashStyle,
+                  symbol: men_symbol,
                     number: 2103,
                     Personal: 20.4,
                     Teaching: 12.9,
@@ -199,6 +211,7 @@ function plotSupportSource(topic, race_list, container) {
                  {name: 'Men - White',
                   color: '#388CE8',
                   dashStyle: men_dashStyle,
+                  symbol: men_symbol,
                     number: 43472,
                     Personal: 10.4,
                     Teaching: 17.5,
@@ -229,6 +242,7 @@ function plotSupportSource(topic, race_list, container) {
                  {name: 'Men - Minority',
                   color: '#46780C',
                   dashStyle: men_dashStyle,
+                  symbol: men_symbol,
                     number: 5473,
                     Personal: 15.1,
                     Teaching: 13.7,
@@ -254,7 +268,8 @@ function plotSupportSource(topic, race_list, container) {
                            Data[d].Other],
                     pointPlacement: 'on',
                     color: Data[d].color,
-                    dashStyle: Data[d].dashStyle}
+                    dashStyle: Data[d].dashStyle,
+                    marker: {symbol: Data[d].symbol}}
                     )
                 race_idx.splice(race_idx.indexOf(i),1)
             }
