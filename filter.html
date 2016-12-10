@@ -16,11 +16,13 @@
 	  <label class="control-label" for="topic">1). Select a Topic</label><br>
 	  <div id="dropdown"> 
 	    <select id="topic" class="form-control">
-	    	<option value="" selected hidden>Please select</option>
-	      <option>Doctoral Degree trend</option>
-	      <option>Master degree trend</option>
-	      <option>Doctoral employment in 2013</option>
-	      <option>Master employment in 2013</option>
+	      <option value="" selected hidden>Please select</option>
+	      <option>Doctoral Degree Trend</option>
+	      <option>Master Degree Trend</option>
+	      <option>Doctoral Employment in 2013</option>
+	      <option>Master Employment in 2013</option>
+	      <option>Source of Support for Doctoral in 2013</option>
+	      <option>Government S&E Employment in Races</option>
 	    </select> 
 	    <br>
 	    <label class="control-label" for="groups">2). Select Data</label><br>
@@ -29,11 +31,11 @@
 			    <li>
 			      <input type="checkbox" id="optionMale"><label for="optionMale">&nbsp&nbspMale</label>
 			      <ul>
-			        <li><label><input id="male_white" type="checkbox" class="subOptionMale"> White</label></li>
-			        <li><label><input id="male_hispanic" type="checkbox" class="subOptionMale"> Hispanic</label></li>
-			        <li><label><input id="male_african" type="checkbox" class="subOptionMale"> African</label></li>
-			        <li><label><input id="male_native" type="checkbox" class="subOptionMale"> Native</label></li>
-			        <li><label><input id="male_all_minority" type="checkbox" class="subOptionMale"> All Minorites</label></li>
+			        <li><label><input id="Men - White" type="checkbox" class="subOptionMale"> White</label></li>
+			        <li><label><input id="Men - Hispanic" type="checkbox" class="subOptionMale"> Hispanic</label></li>
+			        <li><label><input id="Men - African" type="checkbox" class="subOptionMale"> African</label></li>
+			        <li><label><input id="Men - Native" type="checkbox" class="subOptionMale"> Native</label></li>
+			        <li><label><input id="Men - Minority" type="checkbox" class="subOptionMale"> STEM Minorites</label></li>
 			      </ul>
 			    </li>
 			  </ul>
@@ -41,11 +43,11 @@
 			    <li>
 			      <input type="checkbox" id="optionFemale"><label for="optionFemale">&nbsp&nbspFemale</label>
 			      <ul>
-			        <li><label><input id="female_white" type="checkbox" class="subOptionFemale"> White</label></li>
-			        <li><label><input id="female_hispanic" type="checkbox" class="subOptionFemale"> Hispanic</label></li>
-			        <li><label><input id="female_african" type="checkbox" class="subOptionFemale"> African</label></li>
-			        <li><label><input id="female_native" type="checkbox" class="subOptionFemale"> Native</label></li>
-			        <li><label><input id="female_all_minority" type="checkbox" class="subOptionFemale"> All Minorites</label></li>
+			        <li><label><input id="Women - White" type="checkbox" class="subOptionFemale"> White</label></li>
+			        <li><label><input id="Women - Hispanic" type="checkbox" class="subOptionFemale"> Hispanic</label></li>
+			        <li><label><input id="Women - African" type="checkbox" class="subOptionFemale"> African</label></li>
+			        <li><label><input id="Women - Native" type="checkbox" class="subOptionFemale"> Native</label></li>
+			        <li><label><input id="Women - Minority" type="checkbox" class="subOptionFemale"> STEM Minorites</label></li>
 			      </ul>
 			    </li>
 			  </ul>
@@ -63,6 +65,7 @@
 <script>
 
 var chart1;
+var chart_counter = 0;
 
 $(function () {
     chart1 = Highcharts.chart('chart_container', {
@@ -123,7 +126,7 @@ checkallFemale.onclick = function() {
             e.preventDefault();
             var groups_selected = [];
             if (checkallMale.checked) {
-            	groups_selected.push('male_white', 'male_hispanic', 'male_african', 'male_native', 'male_all_minority');
+            	groups_selected.push('Men (all)');
             } else {
             	var maleChecked = document.querySelectorAll('input.subOptionMale:checked')
             	$(maleChecked).each(function(index, value) { 
@@ -133,7 +136,7 @@ checkallFemale.onclick = function() {
         	}
 
            	if (checkallFemale.checked) {
-            	groups_selected.push('female_white', 'female_hispanic', 'female_african', 'female_native', 'female_all_minority');
+            	groups_selected.push('Women (all)');
             } else {
             	var femaleChecked = document.querySelectorAll('input.subOptionFemale:checked')
             	$(femaleChecked).each(function(index, value) { 
@@ -142,7 +145,15 @@ checkallFemale.onclick = function() {
 					});
         	}
 
-           	console.log(groups_selected)
+        	chart_counter += 1;
+           	console.log(groups_selected);
+           	var topic = $('#topic:selected').text();
+           	if (topic == "Doctoral Degree Trend" || topic == "Master Degree Trend" || topic == "Government S&E Employment in Races") {
+           		var container = $('<div id="line_chart_container_'+chart_counter+'" style="height: 500px, width: 30%"></div>');
+           	};
+           	
+           	var container = $('<div id="chart_container_'+chart_counter+'" style="height: 500px, width: 30%"></div>');
+
 
        }); 
     });
