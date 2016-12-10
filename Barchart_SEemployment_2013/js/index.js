@@ -90,15 +90,15 @@ function getValue(array, id) {
                       color: "#F6A623",   
                       name: 'Men - Hispanic',
                       data: [7,7,6,4]
-                    }]
+                    }
             );    
         }
 
-        if ( string == "Women - Hispanic" ) {
+        if ( array[index] == "Women - Hispanic" ) {
             
             console.log("Found you!!");
-            degree_data.append(
-                    [{        
+            degree_data.push(
+                    {        
                       color: "#F6A623",   
                       name: 'Women - Hispanic',
                       data: [8,9,7,5]
