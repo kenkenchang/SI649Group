@@ -20,30 +20,29 @@ function plotAnyLineTrend(deg, years, deg_plot_info) {
                 text: deg_plot_info[2]
             }
         },tooltip: {
-            //split: true,
+            split: true,
             valueSuffix: deg_plot_info[3],
             crosshairs: {
               color: 'black',
               dashStyle: 'solid',
               width: 4
             },
-            shared: true
+            //shared: true
         },
         series: deg
     });
 };
 
 
-
 function getMetricTotals (vals_json){
   var sum_total_array = [];
   for (var i = 0; i < vals_json.length; i++) {
-    if (vals_json[i].name == "All male"){//gets all male totals
+    if (vals_json[i].name == "Men (all)"){//gets all male totals
       for (var j = 0; j < vals_json[i].data.length; j++) {
         sum_total_array.push(vals_json[i].data[j])
       }
     }
-    else if (vals_json[i].name == "All female"){ //gets all female totals
+    else if (vals_json[i].name == "Women (all)"){ //gets all female totals
       for (var j = 0; j < vals_json[i].data.length; j++) {
         sum_total_array[j]+=vals_json[i].data[j]
       }
@@ -77,4 +76,33 @@ function calcPercentChangeByYear(percent_json){
     percent_json[i].data = data;
   }
   return percent_json;
+}
+
+function get_topic_json (url){
+    var json;
+    $.ajax({
+        'async': false,
+        'global': false,
+        'url': url,
+        'dataType': "json",
+        'success': function (data) {
+            json = data;
+        }
+    });
+    return json;
+};
+
+
+
+function get_json_to_plot(params_array, topic_json){
+  var json_to_plot = [];
+  for (var i = 0; i < params_array[1].length; i++) {
+      for (var j = 0; j < topic_json.length; j++) {
+        if (params_array[1][i] == topic_json[j].name){
+          json_to_plot.push_back(topic_json[j]);
+          break;
+        }
+      }
+  }
+  return json_to_plot;
 }
