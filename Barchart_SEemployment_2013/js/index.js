@@ -89,6 +89,18 @@ function getValue() {
             degree_data.append(
                     [{        
                       color: "#F6A623",   
+                      name: 'Men - Hispanic',
+                      data: [7,7,6,4]
+                    }]
+            );    
+        }
+
+        if ( string == "Women - Hispanic" ) {
+            
+            console.log("Found you!!");
+            degree_data.append(
+                    [{        
+                      color: "#F6A623",   
                       name: 'Women - Hispanic',
                       data: [8,9,7,5]
                     }]
