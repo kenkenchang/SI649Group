@@ -1,0 +1,154 @@
+<html>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="filter.css"> 
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+
+<div id="chart_container" style="height: 400px"></div><input id="remove_chart_1" type="button" value="remove" />
+<button id="update_button" class="autocompare">Set new data</button><br><br>
+
+<div class = "container">
+	<form id='options_form'>
+	<div class="form-group">
+	  <label class="control-label" for="topic">1). Select a Topic</label><br>
+	  <div id="dropdown"> 
+	    <select id="topic" class="form-control">
+	    	<option value="" selected hidden>Please select</option>
+	      <option>Doctoral Degree trend</option>
+	      <option>Master degree trend</option>
+	      <option>Doctoral employment in 2013</option>
+	      <option>Master employment in 2013</option>
+	    </select> 
+	    <br>
+	    <label class="control-label" for="groups">2). Select Data</label><br>
+	   <div id="groups">
+			  <ul class = "main_ul">
+			    <li>
+			      <input type="checkbox" id="optionMale"><label for="optionMale">&nbsp&nbspMale</label>
+			      <ul>
+			        <li><label><input id="male_white" type="checkbox" class="subOptionMale"> White</label></li>
+			        <li><label><input id="male_hispanic" type="checkbox" class="subOptionMale"> Hispanic</label></li>
+			        <li><label><input id="male_african" type="checkbox" class="subOptionMale"> African</label></li>
+			        <li><label><input id="male_native" type="checkbox" class="subOptionMale"> Native</label></li>
+			        <li><label><input id="male_all_minority" type="checkbox" class="subOptionMale"> All Minorites</label></li>
+			      </ul>
+			    </li>
+			  </ul>
+			  <ul class = "main_ul">
+			    <li>
+			      <input type="checkbox" id="optionFemale"><label for="optionFemale">&nbsp&nbspFemale</label>
+			      <ul>
+			        <li><label><input id="female_white" type="checkbox" class="subOptionFemale"> White</label></li>
+			        <li><label><input id="female_hispanic" type="checkbox" class="subOptionFemale"> Hispanic</label></li>
+			        <li><label><input id="female_african" type="checkbox" class="subOptionFemale"> African</label></li>
+			        <li><label><input id="female_native" type="checkbox" class="subOptionFemale"> Native</label></li>
+			        <li><label><input id="female_all_minority" type="checkbox" class="subOptionFemale"> All Minorites</label></li>
+			      </ul>
+			    </li>
+			  </ul>
+		</div>
+	  </div>
+	  <div>
+	  <button type="submit" class="btn btn-default">Add Graph</button>
+	</div>
+	</div>
+</form>
+</div>
+
+</html>
+
+<script>
+
+var chart1;
+
+$(function () {
+    chart1 = Highcharts.chart('chart_container', {
+        series: [{
+            data: [6,7,20,40,20]
+        }]
+    });
+
+});
+
+// updates data
+$('#update_button').click(function () {
+    chart1.series[0].setData([0,1,2,3,4]);
+});
+
+// removes chart
+$('#remove_chart_1').click(function(){
+	chart1.destroy();
+});
+
+// If male is selected, select all subgroups
+var maleCheckboxes = document.querySelectorAll('input.subOptionMale'),
+    checkallMale = document.getElementById('optionMale');
+
+for(var i=0; i<maleCheckboxes.length; i++) {
+  maleCheckboxes[i].onclick = function() {
+    var maleCheckedCount = document.querySelectorAll('input.subOptionMale:checked').length;
+
+  }
+}
+
+checkallMale.onclick = function() {
+  for(var i=0; i<maleCheckboxes.length; i++) {
+    maleCheckboxes[i].checked = this.checked;
+  }
+}
+
+// If female is selected, select all subgroups
+var femaleCheckboxes = document.querySelectorAll('input.subOptionFemale'),
+    checkallFemale = document.getElementById('optionFemale');
+
+for(var i=0; i<femaleCheckboxes.length; i++) {
+  femaleCheckboxes[i].onclick = function() {
+    var femaleCheckedCount = document.querySelectorAll('input.subOptionFemale:checked').length;
+
+  }
+}
+
+checkallFemale.onclick = function() {
+  for(var i=0; i<femaleCheckboxes.length; i++) {
+    femaleCheckboxes[i].checked = this.checked;
+  }
+}
+
+// Collect options
+ $(function(){
+       $('#options_form').on('submit', function(e){
+            e.preventDefault();
+            var groups_selected = [];
+            if (checkallMale.checked) {
+            	groups_selected.push('male_white', 'male_hispanic', 'male_african', 'male_native', 'male_all_minority');
+            } else {
+            	var maleChecked = document.querySelectorAll('input.subOptionMale:checked')
+            	$(maleChecked).each(function(index, value) { 
+            		console.log(value);
+  					groups_selected.push(value.id)
+					});
+        	}
+
+           	if (checkallFemale.checked) {
+            	groups_selected.push('female_white', 'female_hispanic', 'female_african', 'female_native', 'female_all_minority');
+            } else {
+            	var femaleChecked = document.querySelectorAll('input.subOptionFemale:checked')
+            	$(femaleChecked).each(function(index, value) { 
+            		console.log(value);
+  					groups_selected.push(value.id)
+					});
+        	}
+
+           	console.log(groups_selected)
+
+       }); 
+    });
+
+
+
+
+
+</script>

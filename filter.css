@@ -1,0 +1,12 @@
+#dropdown {
+	display: inline-block;
+	width: 250px;
+}
+
+ul {
+  list-style: none;
+}
+
+.main_ul {
+	padding-left: 0px;
+}

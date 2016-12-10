@@ -1,9 +1,22 @@
-function plotGovernmentRace(gemp) {
+function plotGovernmentRace() {
+  var gemp_json = (function () {
+  var json;
+  $.ajax({
+      'async': false,
+      'global': false,
+      'url': "GovtEmployed.json",
+      'dataType': "json",
+      'success': function (data) {
+          json = data;
+      }
+  });
+  return json;
+  })();
 	var years = ["2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015"];
   var gemp_plot_info = ["gemp-container", "S&E Employed by Government Trend", '% employed by govt.',  '% of total S&E employed']
-  var gemp_strict_plot_info = ["gemp-strict-container", "S&E Employed by Government Percent Increase Trend", '% employed by govt.',  '% change from ' + years[0] ]
-  var gemp_totals_array = getMetricTotals(gemp);
-  var gemp_percent = convertValsToPercent(gemp_totals_array, gemp);
+  var gemp_strict_plot_info = ["gemp-strict-container", "S&E Employed by Government Percent Increase Trend", '% employed by govt.',  '% change from previous year' ]
+  var gemp_totals_array = getMetricTotals(gemp_json);
+  var gemp_percent = convertValsToPercent(gemp_totals_array, gemp_json);
   plotAnyLineTrend(gemp_percent, years, gemp_plot_info);
   var gemp_aligned_array = gemp_percent
   gemp_aligned_array = calcPercentChangeByYear(gemp_aligned_array);
