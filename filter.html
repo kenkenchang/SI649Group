@@ -29,11 +29,11 @@
 			    <li>
 			      <input type="checkbox" id="optionMale"><label for="optionMale">&nbsp&nbspMale</label>
 			      <ul>
-			        <li><label><input id="male_white" type="checkbox" class="subOptionMale"> White</label></li>
-			        <li><label><input id="male_hispanic" type="checkbox" class="subOptionMale"> Hispanic</label></li>
-			        <li><label><input id="male_african" type="checkbox" class="subOptionMale"> African</label></li>
-			        <li><label><input id="male_native" type="checkbox" class="subOptionMale"> Native</label></li>
-			        <li><label><input id="male_all_minority" type="checkbox" class="subOptionMale"> All Minorites</label></li>
+			        <li><label><input id="Male - White" type="checkbox" class="subOptionMale"> White</label></li>
+			        <li><label><input id="Male - Hispanic" type="checkbox" class="subOptionMale"> Hispanic</label></li>
+			        <li><label><input id="Male - African" type="checkbox" class="subOptionMale"> African</label></li>
+			        <li><label><input id="Male - Native" type="checkbox" class="subOptionMale"> Native</label></li>
+			        <li><label><input id="Male - Minority" type="checkbox" class="subOptionMale"> STEM Minorites</label></li>
 			      </ul>
 			    </li>
 			  </ul>
@@ -41,11 +41,11 @@
 			    <li>
 			      <input type="checkbox" id="optionFemale"><label for="optionFemale">&nbsp&nbspFemale</label>
 			      <ul>
-			        <li><label><input id="female_white" type="checkbox" class="subOptionFemale"> White</label></li>
-			        <li><label><input id="female_hispanic" type="checkbox" class="subOptionFemale"> Hispanic</label></li>
-			        <li><label><input id="female_african" type="checkbox" class="subOptionFemale"> African</label></li>
-			        <li><label><input id="female_native" type="checkbox" class="subOptionFemale"> Native</label></li>
-			        <li><label><input id="female_all_minority" type="checkbox" class="subOptionFemale"> All Minorites</label></li>
+			        <li><label><input id="Women - White" type="checkbox" class="subOptionFemale"> White</label></li>
+			        <li><label><input id="Women - Hispanic" type="checkbox" class="subOptionFemale"> Hispanic</label></li>
+			        <li><label><input id="Women - African" type="checkbox" class="subOptionFemale"> African</label></li>
+			        <li><label><input id="Women - Native" type="checkbox" class="subOptionFemale"> Native</label></li>
+			        <li><label><input id="Women - Minority" type="checkbox" class="subOptionFemale"> STEM Minorites</label></li>
 			      </ul>
 			    </li>
 			  </ul>
@@ -123,7 +123,7 @@ checkallFemale.onclick = function() {
             e.preventDefault();
             var groups_selected = [];
             if (checkallMale.checked) {
-            	groups_selected.push('male_white', 'male_hispanic', 'male_african', 'male_native', 'male_all_minority');
+            	groups_selected.push('Men (all)');
             } else {
             	var maleChecked = document.querySelectorAll('input.subOptionMale:checked')
             	$(maleChecked).each(function(index, value) { 
@@ -133,7 +133,7 @@ checkallFemale.onclick = function() {
         	}
 
            	if (checkallFemale.checked) {
-            	groups_selected.push('female_white', 'female_hispanic', 'female_african', 'female_native', 'female_all_minority');
+            	groups_selected.push('Women (all)');
             } else {
             	var femaleChecked = document.querySelectorAll('input.subOptionFemale:checked')
             	$(femaleChecked).each(function(index, value) { 
