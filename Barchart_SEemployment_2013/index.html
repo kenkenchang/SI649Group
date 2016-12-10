@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<script src='https://code.highcharts.com/highcharts.js'></script>
+<script src='https://code.highcharts.com/modules/exporting.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+
+<script src="js/index.js"></script>
+<script src="js/data.js"></script>
+
+
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Bar Chart</title>   
+</head>
+
+<body>
+
+	<!-- field to make request -->
+	Search groups that you're interested in (use comma to separate):<br>
+	For example: White Male, White Female
+
+	<br>
+	<input type="text" id="input" name="request" value="" style="position: center;"><br>
+	<input type="submit" value="Submit" onclick="getValue()">
+
+	<!-- placeholder of graphs -->
+  	<div id="byDegree" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+	<div id="byRace" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+</body>
+</html>
