@@ -1,7 +1,7 @@
-function plotEmployedSEByDegree_2013(data) {
+function plotEmployedSEByDegree_2013(data, id) {
 
   // plotting function
-      Highcharts.chart('byDegree', {
+      Highcharts.chart(id, {
           chart: {
               type: 'column'
           },
@@ -46,15 +46,13 @@ function plotEmployedSEByDegree_2013(data) {
 
 
 // get input value
-function getValue() {
+function getValue(array, id) {
     
     // the input get from the interface
-    var array;
     var degree_data = [];
 
-  
     // for loop to concatenate the inputs
-    Men - Hispanic, Women - White
+    // Men - Hispanic, Women - White
 
     for ( string in array ) {
 
@@ -156,5 +154,5 @@ function getValue() {
         }
     }
     // call plotting function
-    plotEmployedSEByDegree_2013(degree_data);
+    plotEmployedSEByDegree_2013(degree_data, id);
 }
