@@ -3,7 +3,7 @@ function plotSupportSource(topic, race_list, container) {
 	title_str1 = 'Source of Support for '
 	title_str2 = ' Doctor in 2010-14'
 
-    men_dashStyle = 'ShortDot'
+    men_dashStyle = 'Solid'
     men_symbol = 'triangle'
     women_dashStyle = 'Solid'
     women_symbol = 'circle'
@@ -74,7 +74,7 @@ function plotSupportSource(topic, race_list, container) {
                  //    Fellowship: 14.3,
                  //    Other: 57.3},
                  {name: 'Women (all)',
-                  color: '#A408C4',
+                  color: '#BD0FE1',
                   dashStyle: women_dashStyle,
                   symbol: women_symbol,
                     number: 48887,
@@ -111,7 +111,7 @@ function plotSupportSource(topic, race_list, container) {
                  //    Fellowship: 37.7,
                  //    Other: 6.4},
                  {name: 'Women - African',
-                  color: '#7ED3211',
+                  color: '#7ED321',
                   dashStyle: women_dashStyle,
                   symbol: women_symbol,
                     number: 2911,
@@ -152,7 +152,7 @@ function plotSupportSource(topic, race_list, container) {
                  //    Fellowship: 12.4,
                  //    Other: 63.2},
                  {name: 'Women - Minority',
-                  color: '#B3A606',
+                  color: '#46780C',
                   dashStyle: women_dashStyle,
                   symbol: women_symbol,
                     number: 6512,
@@ -162,7 +162,7 @@ function plotSupportSource(topic, race_list, container) {
                     Fellowship: 42.8,
                     Other: 8.6},
                  {name: 'Men (all)',
-                  color: '#C397CC',
+                  color: '#BD0FE1',
                   dashStyle: men_dashStyle,
                   symbol: men_symbol,
                     number: 57430,
@@ -172,7 +172,7 @@ function plotSupportSource(topic, race_list, container) {
                     Fellowship: 30.9,
                     Other: 9.3},
                  {name: 'Men - Hispanic',
-                  color: '#FFCA72',
+                  color: '#F6A623',
                   dashStyle: men_dashStyle,
                   symbol: men_symbol,
                     number: 3201,
@@ -182,7 +182,7 @@ function plotSupportSource(topic, race_list, container) {
                     Fellowship: 39.4,
                     Other: 10},
                  {name: 'Men - Native',
-                  color: '#F386B3',
+                  color: '#ED2A7B',
                   dashStyle: men_dashStyle,
                   symbol: men_symbol,
                     number: 169,
@@ -199,7 +199,7 @@ function plotSupportSource(topic, race_list, container) {
                  //    Fellowship: 32.7,
                  //    Other: 9.2},
                  {name: 'Men - African',
-                  color: '#A8EE5C',
+                  color: '#7ED321',
                   dashStyle: men_dashStyle,
                   symbol: men_symbol,
                     number: 2103,
@@ -209,7 +209,7 @@ function plotSupportSource(topic, race_list, container) {
                     Fellowship: 37.2,
                     Other: 9.5},
                  {name: 'Men - White',
-                  color: '#A4BBD5',
+                  color: '#388CE8',
                   dashStyle: men_dashStyle,
                   symbol: men_symbol,
                     number: 43472,
@@ -240,7 +240,7 @@ function plotSupportSource(topic, race_list, container) {
                  //    Fellowship: 15.5,
                  //    Other: 53.3},
                  {name: 'Men - Minority',
-                  color: '#E3D73F',
+                  color: '#46780C',
                   dashStyle: men_dashStyle,
                   symbol: men_symbol,
                     number: 5473,
