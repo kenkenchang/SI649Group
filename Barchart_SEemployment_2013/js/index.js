@@ -1,6 +1,5 @@
 function plotEmployedSEByDegree_2013(data, id) {
     console.log(data);
-
   // plotting function
       Highcharts.chart(id, {
           chart: {
@@ -22,6 +21,7 @@ function plotEmployedSEByDegree_2013(data, id) {
           },
           yAxis: {
               min: 0,
+              tickInterval: 5,
               title: {
                   text: 'Percent'
               }
@@ -47,8 +47,7 @@ function plotEmployedSEByDegree_2013(data, id) {
 
 // get input value
 function getValue(array, id) {
-
-    
+  
     // the input get from the interface
     var degree_data = [];
 
@@ -153,6 +152,7 @@ function getValue(array, id) {
                     }
             );    
         
+
         }
     }
     // call plotting function

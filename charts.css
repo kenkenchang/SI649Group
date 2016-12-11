@@ -1,25 +1,3 @@
-/*div {
+div {
   display: inline;
-}*/
-
-@import 'https://code.highcharts.com/css/highcharts.css';
-
-
-.highcharts-series-0 {
-  stroke-dasharray: 1, 3;
-}
-.highcharts-series-1 {
-  stroke-dasharray: 1, 3;
-}
-.highcharts-series-2 {
-  stroke-dasharray: 1, 3;
-}
-.highcharts-series-3 {
-  stroke-dasharray: 1, 3;
-}
-.highcharts-series-4 {
-  stroke-dasharray: 1, 3;
-}
-.highcharts-series-5 {
-  stroke-dasharray: 1, 3;
 }

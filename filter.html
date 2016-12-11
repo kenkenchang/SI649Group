@@ -4,6 +4,7 @@
 <link rel="stylesheet" type="text/css" href="filter.css"> 
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="charts.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/highcharts-more.js"></script>
@@ -11,6 +12,12 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
 <script src="plotSupportSource.js"></script>
 <script src="Barchart_SEemployment_2013/js/index.js"></script>
+<script src="plotAnyLineTrend.js"></script>
+<script src="plotGovernmentRace.js"></script>
+<script src="plotDegreeAttainment.js"></script>
+<div id="chart_container" style="height: 400px"></div><input id="remove_chart_1" type="button" value="remove" />
+<button id="update_button" class="autocompare">Set new data</button><br><br>
+
 
 <div class = "container">
 	<form id='options_form'>
@@ -70,6 +77,12 @@
 
 var chart1;
 var chart_counter = 0;
+var test_chart;
+var normalized = false;
+var test_series_calculated = false;
+var new_series_calculated = false;
+var test_series_array = []
+var new_series = []
 
 $(function () {
     chart1 = Highcharts.chart('chart_container', {
@@ -82,7 +95,34 @@ $(function () {
 
 // updates data
 $('#update_button').click(function () {
-    chart1.series[0].setData([0,1,2,3,4]);
+  if (normalized == false){
+    if (test_series_calculated == false){
+      for (var i = 0; i < test_chart.series.length; i++) {
+        var y_array = [];
+        for (var j = 0; j < test_chart.series[i].data.length; j++) {
+          y_array.push(test_chart.series[i].data[j].y);
+        }
+        test_series_array.push(y_array);      
+      }
+      test_series_calculated = true;
+    }      
+    if (new_series_calculated == false){
+      new_series = calcPercentChangeByYearOnButtonClick(test_series_array)
+      new_series_calculated = true
+    }
+    for (var i = 0; i < new_series.length; i++) {
+      test_chart.series[i].setData(new_series[i]);      
+    }
+    normalized = true;
+  }
+  else if (normalized == true){
+    for (var i = 0; i < test_series_array.length; i++) {
+      test_chart.series[i].setData(test_series_array[i]);      
+    }
+    normalized = false;
+  }
+  
+      //chart1.series[0].setData([0,1,2,3,4]);*/
 });
 
 // removes chart
@@ -186,7 +226,6 @@ $('#topic').on('change', function(e){
            		parameters.push("bar_chart_container_"+chart_counter);
               getValue(parameters[1], parameters[2]);
               $(remove_button).insertAfter(container);
-
            	}
            	else {
            		var container = $('<div id="star_chart_container_'+chart_counter+'" style="height: 500px, min-width: 300px"></div>');

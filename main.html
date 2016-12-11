@@ -5,10 +5,11 @@
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/highcharts-more.js"></script>
 <script src="plotAnyLineTrend.js"></script>
-<script src="plotDegreeAttainment.js"></script>
 <script src="plotGovernmentRace.js"></script>
+<script src="plotDegreeAttainment.js"></script>
 <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="charts.css">
 </HEAD>
 
 <body>
@@ -20,47 +21,17 @@
 <div id="gemp-strict-container" style="width: 30%; height: 500px;">  </div>
 
 <script type="text/javascript">
-/*  var gemp_json = (function () {
-    var json;
-    $.ajax({
-        'async': false,
-        'global': false,
-        'url': "GovtEmployed.json",
-        'dataType': "json",
-        'success': function (data) {
-            json = data;
-        }
-    });
-    return json;
-  })();
-  var mdeg_json = (function () {
-    var json;
-    $.ajax({
-        'async': false,
-        'global': false,
-        'url': "MasterDegree.json",
-        'dataType': "json",
-        'success': function (data) {
-            json = data;
-        }
-    });
-    return json;
-  })();
-  var ddeg_json = (function () {
-    var json;
-    $.ajax({
-        'async': false,
-        'global': false,
-        'url': "DoctoralDegree.json",
-        'dataType': "json",
-        'success': function (data) {
-            json = data;
-        }
-    });
-    return json;
-  })(); */
-  plotGovernmentRace();
-  plotDegreeAttainment(); 
+/*function plotGraph(array_of_params){
+    if (array_of_params[0] == "Doctoral Degree Trend" || array_of_params[0] == "Master Degree Trend" ){
+      plotDegreeAttainment(array_of_params);
+    }
+    else if (array_of_params[0] == "Government S&E Employment in Races"){
+      plotGovernmentRace(array_of_params);
+    }
+};
+//plotGraph(array_of_params);
+  //plotGovernmentRace();
+  //plotDegreeAttainment(); */
 </script>
 </body>
 </html>
