@@ -1,11 +1,5 @@
 function plotAnyLineTrend(deg, years, deg_plot_info) { 
-  Highcharts.setOptions({
-        colors: ['#BD0FE1', '#388CE8', '#F6A623', '#7ED321', '#ED2A7B', '#46780C'],
-        dashStyle: 'dot'
-    });
-
-
-    Highcharts.chart( deg_plot_info[0], {
+  var lineChart = Highcharts.chart( deg_plot_info[0], {
         chart: {
             type: 'line'
         },
@@ -30,7 +24,8 @@ function plotAnyLineTrend(deg, years, deg_plot_info) {
             //shared: true
         },
         series: deg
-    });
+  });
+  return lineChart;
 };
 
 
@@ -78,6 +73,21 @@ function calcPercentChangeByYear(percent_json){
   return percent_json;
 }
 
+function calcPercentChangeByYearOnButtonClick(input_array){
+  var arr_to_return = [];
+  for (var i = 0; i < input_array.length; i++) { //for each json object in array
+    var value_of_start_year = input_array[i][0];
+    var data = []
+    for (var j = 0; j < input_array[i].length; j++) { 
+      var percent_change_from_start_year;
+      percent_change_from_start_year = Math.round(((input_array[i][j]-value_of_start_year)/value_of_start_year)*100*100)/100
+      data.push(percent_change_from_start_year)     
+    }
+    arr_to_return[i] = data;
+  }
+  return arr_to_return;
+}
+
 function get_topic_json (url){
     var json;
     $.ajax({
@@ -96,10 +106,10 @@ function get_topic_json (url){
 
 function get_json_to_plot(params_array, topic_json){
   var json_to_plot = [];
-  for (var i = 0; i < params_array[1].length; i++) {
+  for (var i = 0; i < params_array.length; i++) {
       for (var j = 0; j < topic_json.length; j++) {
-        if (params_array[1][i] == topic_json[j].name){
-          json_to_plot.push_back(topic_json[j]);
+        if (params_array[i] == topic_json[j].name){
+          json_to_plot.push(topic_json[j]);
           break;
         }
       }
