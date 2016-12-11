@@ -1,4 +1,5 @@
 function plotEmployedSEByDegree_2013(data, id) {
+    console.log(data);
 
   // plotting function
       Highcharts.chart(id, {
@@ -21,7 +22,6 @@ function plotEmployedSEByDegree_2013(data, id) {
           },
           yAxis: {
               min: 0,
-              tickInterval: 5,
               title: {
                   text: 'Percent'
               }
@@ -31,7 +31,7 @@ function plotEmployedSEByDegree_2013(data, id) {
               pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
                   '<td style="padding:0"><b>{point.y:.1f} % </b></td></tr>',
               footerFormat: '</table>',
-              shared: true,
+              shared: false,
               useHTML: true
           },
           plotOptions: {
@@ -47,6 +47,7 @@ function plotEmployedSEByDegree_2013(data, id) {
 
 // get input value
 function getValue(array, id) {
+
     
     // the input get from the interface
     var degree_data = [];
@@ -54,91 +55,104 @@ function getValue(array, id) {
     // for loop to concatenate the inputs
     // Men - Hispanic, Women - White
 
-    for ( string in array ) {
+    for ( index in array ) {
 
         console.log("Into the for loop");
-        if ( string == "Men - White" ) {
+        if ( array[index] == "Men - White" ) {
             
             console.log("Found you!!");
-            degree_data.append(
-                    [{
-                      color: "#388CE8",          
+            degree_data.push(
+                    {
+                      color: "#A4BBD5",          
                       name: 'Men - White',
                       data: [73,74, 71, 68]
-                    }]
+                    }
             );    
         }
 
-        if ( string == "Women - White" ) {
+        if ( array[index] == "Women - White" ) {
             
             console.log("Found you!!");
-            degree_data.append(
-                    [{
+            degree_data.push(
+                    {
                       color: "#388CE8",         
                       name: 'Women - White',
                       data: [71,70,73,68]
-                    }]
+                    }
             );    
         }
 
-        if ( string == "Men - Hispanic" ) {
+        if ( array[index] == "Men - Hispanic" ) {
             
             console.log("Found you!!");
-            degree_data.append(
-                    [{        
+            degree_data.push(
+                    {        
+                      color: "#FFCA72",   
+                      name: 'Men - Hispanic',
+                      data: [7,7,6,4]
+                    }
+            );    
+        }
+
+        if ( array[index] == "Women - Hispanic" ) {
+            
+            console.log("Found you!!");
+            degree_data.push(
+                    {        
                       color: "#F6A623",   
                       name: 'Women - Hispanic',
                       data: [8,9,7,5]
-                    }]
+                    }
             );    
         }
 
-        if ( string == "Men - African" ) {
+        if ( array[index] == "Men - African" ) {
             
             console.log("Found you!!");
-            degree_data.append(
-                    [{         
-                      color: "#7ED321",
-                      name: 'Men - African',
+            degree_data.push(
+                    {         
+                      color: "#A8EE5C",
+                      name: 'Men - African American',
                       data: [4,5,5,3]
-                    }]
+                    }
             );    
         }
 
-        if ( string == "Women - African" ) {
+        if ( array[index] == "Women - African" ) {
             
             console.log("Found you!!");
-            degree_data.append(
-                    [{
+            degree_data.push(
+                    {
                       color: "#7ED321",       
-                      name: 'Women - African',
+                      name: 'Women - African American',
                       data: [8,8,8,6]
-                    }]
+                    }
             );    
         }
 
-        if ( string == "Men - Native" ) {
+        if ( array[index] == "Men - Native" ) {
             
             console.log("Found you!!");
-            degree_data.append(
-                    [{
-                      color:"#ED2A7B",         
-                      name: 'Men - Native',
+            degree_data.push(
+                    {
+                      color:"#F386B3",         
+                      name: 'Men - Native American',
                       data: [0.2,0.2,0.2,0.1]
-                    }]
+                    }
             );    
         }
 
-        if ( string == "Women - Native" ) {
-            
+        if ( array[index] == "Women - Native" ) {
+    
             console.log("Found you!!");
-            degree_data.append(
-                    [{         
+            degree_data.push(
+                    {         
                       color:"#ED2A7B",
-                      name: 'Women - Native',
+                      name: 'Women - Native American',
                       data: [0.3,0.4,0.2,0.4]
-                    }]
+                    }
             );    
+        
         }
     }
     // call plotting function
