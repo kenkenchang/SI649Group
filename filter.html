@@ -214,6 +214,7 @@ $('#topic').on('change', function(e){
               $("#line_chart_container_"+chart_counter).append(remove_button);
            		// $("#line_chart_container_"+chart_counter).append(remove_button, {id: remove_id});
            		parameters.push("line_chart_container_"+chart_counter);
+              test_chart = plotGraph(parameters);
               $(remove_button).insertAfter(container);
            	
               // call line function

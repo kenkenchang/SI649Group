@@ -3,49 +3,43 @@
     "name": "Men (all)",
     "data": [162641, 164158, 165713, 173666, 183560, 187161, 186955, 185365, 183112, 184806],
     "marker": { "symbol":"triangle" },
-    "dashStyle": "dot",
-    "color": "#BD0FE1"
+    "color": "#C397CC"
   },
   {
     "name": "Men - White",
     "data": [132140, 132433, 132823, 138362, 145342, 147268, 146034, 144028, 141419, 141662],
     "marker": { "symbol":"triangle" },
-    "dashStyle": "dot",
-    "color": "#388CE8"
+    "color": "#A4BBD5"
   },
   {
     "name": "Men - Hispanic",
     "data": [6917, 7176, 7375, 7763, 8360, 8709, 9031, 9249, 9317, 9672],
     "marker": { "symbol":"triangle" },
-    "dashStyle": "dot",
-    "color": "#F6A623"
+    "color": "#FFCA72"
   },
   {
     "name": "Men - African",
     "data": [8096, 8470, 8798, 9475, 10393,  10961,  11316,  11578,  11701,  12132],
     "marker": { "symbol":"triangle" },
-    "dashStyle": "dot",
-    "color": "#7ED321"
+    "color": "#A8EE5C"
   },
   {
     "name": "Men - Native",
     "data": [1365, 1382, 1396, 1437, 1462, 1463, 1410, 1362, 1341, 1296],
     "marker": { "symbol":"triangle" },
-    "dashStyle": "dot",
-    "color": "#ED2A7B"
+    "color": "#F386B3"
   },
   {
     "name": "Men - Minority",                      
     "data": [16378, 17028, 17569,  18675,  20215,  21133,  21757,  22189,  22359,  23100],
     "marker": { "symbol":"triangle" },
-    "dashStyle": "dot",
-    "color": "#46780C"
+    "color": "#E3D73F"
   },
   {
     "name": "Women (all)",
     "data": [56560,  58539,  60806,  65019,  70097,  72660,  73474,  74018,  74017,  74884],
     "marker": { "symbol":"circle" },
-    "color": "#BD0FE1"
+    "color": "#A408C4"
   },
   {
     "name": "Women - White",
@@ -75,6 +69,6 @@
     "name": "Women - Minority",
     "data": [9367, 9856, 10309,  11092,  12008,  12635,  12999,  13375,  13489,  13813],
     "marker": { "symbol":"circle" },
-    "color": "#46780C"
+    "color": "#B3A606"
   }
 ]
