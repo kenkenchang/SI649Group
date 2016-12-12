@@ -15,12 +15,9 @@
 <script src="plotAnyLineTrend.js"></script>
 <script src="plotGovernmentRace.js"></script>
 <script src="plotDegreeAttainment.js"></script>
-<div id="chart_container" style="height: 400px"></div><input id="remove_chart_1" type="button" value="remove" />
-<button id="update_button" class="autocompare">Set new data</button><br><br>
+<h1> Minority Women in STEM: an exploratory analysis </h1>
 
-
-<div class = "container">
-	<form id='options_form'>
+<form id='options_form'>
 	<div class="form-group">
 	  <label class="control-label" for="topic">1). Select a Topic</label><br>
 	  <div id="dropdown"> 
@@ -69,7 +66,6 @@
 	</div>
 	</div>
 </form>
-</div>
 
 </html>
 
@@ -94,7 +90,7 @@ $(function () {
 });
 
 // updates data
-$('#update_button').click(function () {
+$('body').on('click', '.update_button',function(){
   if (normalized == false){
     if (test_series_calculated == false){
       for (var i = 0; i < test_chart.series.length; i++) {
@@ -126,9 +122,15 @@ $('#update_button').click(function () {
 });
 
 // removes chart
+$('body').on('click', '.remove_button_line',function(){
+  $(this).prev().prev('.char').remove();
+  $(this).prev('.update_button').remove();
+  $(this).remove();
+
+});
+
 $('body').on('click', '.remove_button',function(){
-  console.log($(this).prev('div'));
-  $(this).prev('div').remove();
+  $(this).prev('.char').remove();
   $(this).remove();
 
 });
@@ -207,21 +209,23 @@ $('#topic').on('change', function(e){
            parameters.push(groups_selected);
         	 chart_counter += 1;
            	
-           	var remove_button = $('<input type="button" class="remove_button" id="'+chart_counter+'_remove" value="remove"/>')
+           	var remove_button = $('<input type="button" class="remove_button" id="'+chart_counter+'_remove" value="X"/>');
            	if (topic == "Doctoral Degree Trend" || topic == "Master Degree Trend" || topic == "Government S&E Employment in Races") {
-           		var container = $('<div id="line_chart_container_'+chart_counter+'" style="height: 500px, width: 30%"></div>');
+           		var container = $('<div class="char" id="line_chart_container_'+chart_counter+'" style="height: 500px, width: 30%"></div>');
            		$("body").append(container);
+              var remove_button_line = $('<input type="button" class="remove_button_line" id="'+chart_counter+'_remove" value="X"/>');
               $("#line_chart_container_"+chart_counter).append(remove_button);
-           		// $("#line_chart_container_"+chart_counter).append(remove_button, {id: remove_id});
            		parameters.push("line_chart_container_"+chart_counter);
+              var update_button = $('<input type="button" class="update_button" id="update_button" value="+"/>');
               test_chart = plotGraph(parameters);
-              $(remove_button).insertAfter(container);
-           	
-              // call line function
+              $(remove_button_line).insertAfter(container);
+              $(update_button).insertAfter(container);
+              
 
+           
             }
            	else if (topic == "Doctoral Employment in 2013" || topic == "Master Employment in 2013") {
-           		var container = $('<div id="bar_chart_container_'+chart_counter+'" style="height: 400px, width: 600px"></div>');
+           		var container = $('<div class="char" id="bar_chart_container_'+chart_counter+'" style="height: 400px, width: 600px"></div>');
            		$("body").append(container);
            		$("#bar_chart_container_"+chart_counter).append(remove_button);
            		parameters.push("bar_chart_container_"+chart_counter);
@@ -229,7 +233,7 @@ $('#topic').on('change', function(e){
               $(remove_button).insertAfter(container);
            	}
            	else {
-           		var container = $('<div id="star_chart_container_'+chart_counter+'" style="height: 500px, min-width: 300px"></div>');
+           		var container = $('<div class="char" id="star_chart_container_'+chart_counter+'" style="height: 500px, min-width: 300px"></div>');
            		$("body").append(container);
            		parameters.push("star_chart_container_"+chart_counter);
               plotSupportSource(parameters[0], parameters[1], parameters[2]);
