@@ -14,12 +14,13 @@ function plotAnyLineTrend(deg, years, deg_plot_info) {
                 text: deg_plot_info[2]
             }
         },tooltip: {
-            split: true,
+            //split: true,
+            shared: true,
             valueSuffix: deg_plot_info[3],
             crosshairs: {
               color: 'black',
               dashStyle: 'solid',
-              width: 4
+              width: 2
             },
             //shared: true
         },
